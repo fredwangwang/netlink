@@ -2,20 +2,18 @@ package netlink
 
 import (
 	"fmt"
-
-	"golang.org/x/sys/unix"
 )
 
 // Proto is an enum representing an ipsec protocol.
 type Proto uint8
 
 const (
-	XFRM_PROTO_ROUTE2    Proto = unix.IPPROTO_ROUTING
-	XFRM_PROTO_ESP       Proto = unix.IPPROTO_ESP
-	XFRM_PROTO_AH        Proto = unix.IPPROTO_AH
-	XFRM_PROTO_HAO       Proto = unix.IPPROTO_DSTOPTS
-	XFRM_PROTO_COMP      Proto = 0x6c // NOTE not defined on darwin
-	XFRM_PROTO_IPSEC_ANY Proto = unix.IPPROTO_RAW
+	XFRM_PROTO_ROUTE2    Proto = 0x2b // unix.IPPROTO_ROUTING
+	XFRM_PROTO_ESP       Proto = 0x32 // unix.IPPROTO_ESP
+	XFRM_PROTO_AH        Proto = 0x33 // unix.IPPROTO_AH
+	XFRM_PROTO_HAO       Proto = 0x3c // unix.IPPROTO_DSTOPTS
+	XFRM_PROTO_COMP      Proto = 0x6c // unix.IPPROTO_COMP NOTE not defined on darwin
+	XFRM_PROTO_IPSEC_ANY Proto = 0xff // unix.IPPROTO_RAW
 )
 
 func (p Proto) String() string {
